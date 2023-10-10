@@ -1,5 +1,6 @@
 fun main(number: Int): String? {
     val numberToNumeralMapping = mapOf(
+        0 to "",
         1 to "I",
         2 to "II",
         3 to "III",
