@@ -9,4 +9,12 @@ class MainTest {
 
         assertEquals(expectedOutput, actualOutput)
     }
+
+    @Test
+    fun `return II for 2`() {
+        val expectedOutput = "II"
+        val actualOutput: String = main(2)
+
+        assertEquals(expectedOutput, actualOutput)
+    }
 }
