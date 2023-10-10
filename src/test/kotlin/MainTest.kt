@@ -71,6 +71,21 @@ class MainTest {
                 Arguments.of(888, "DCCCLXXXVIII"),
                 Arguments.of(917, "CMXVII"),
                 Arguments.of(999, "CMXCIX"),
+                Arguments.of(1032, "MXXXII"),
+                Arguments.of(1289, "MCCLXXXIX"),
+                Arguments.of(1375, "MCCCLXXV"),
+                Arguments.of(1597, "MDXCVII"),
+                Arguments.of(1782, "MDCCLXXXII"),
+                Arguments.of(2194, "MMCXCIV"),
+                Arguments.of(2465, "MMCDLXV"),
+                Arguments.of(2708, "MMDCCVIII"),
+                Arguments.of(2999, "MMCMXCIX"),
+                Arguments.of(3221, "MMMCCXXI"),
+                Arguments.of(3366, "MMMCCCLXVI"),
+                Arguments.of(3577, "MMMDLXXVII"),
+                Arguments.of(3788, "MMMDCCLXXXVIII"),
+                Arguments.of(3931, "MMMCMXXXI"),
+                Arguments.of(3999, "MMMCMXCIX"),
             )
         }
     }
