@@ -1,10 +1,13 @@
 fun main(number: Int): String? {
     if (number < 0) return null
 
-    val tens = number / 10
-    val ones = number % 10
+    val hundreds = number / 100
+    val hundredsRemainder = number % 100
+    val tens = hundredsRemainder / 10
+    val tensRemainder = hundredsRemainder % 10
+    val ones = tensRemainder % 10
 
-    return tensNumeralFor[tens] + onesNumeralFor[ones]
+    return hundredsNumeralFor[hundreds] + tensNumeralFor[tens] + onesNumeralFor[ones]
 }
 
 val onesNumeralFor = mapOf(
@@ -31,4 +34,17 @@ val tensNumeralFor = mapOf(
     7 to "LXX",
     8 to "LXXX",
     9 to "XC",
+)
+
+val hundredsNumeralFor = mapOf(
+    0 to "",
+    1 to "C",
+    2 to "CC",
+    3 to "CCC",
+    4 to "CD",
+    5 to "D",
+    6 to "DC",
+    7 to "DCC",
+    8 to "DCCC",
+    9 to "CM",
 )
