@@ -1,3 +1,3 @@
 fun main(number: Int): String {
-    return ""
+    return "I"
 }
