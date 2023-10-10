@@ -3,12 +3,7 @@ fun main(number: Int): String? {
 
     var output = ""
 
-    if (number >= 20) {
-        output += "XX"
-    } else if (number >= 10) {
-        output += "X"
-    }
-
+    output += tensNumeralFor[number / 10]
     output += numeralFor[number % 10]
 
     return output
@@ -25,4 +20,10 @@ val numeralFor = mapOf(
     7 to "VII",
     8 to "VIII",
     9 to "IX",
+)
+
+val tensNumeralFor = mapOf(
+    0 to "",
+    1 to "X",
+    2 to "XX",
 )
