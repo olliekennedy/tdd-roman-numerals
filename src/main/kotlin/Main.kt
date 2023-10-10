@@ -1,5 +1,8 @@
+private const val MIN_NUMBER = 0
+private const val MAX_NUMBER = 3999
+
 fun main(number: Int): String? {
-    if (number < 0 || number >= 4000) return null
+    if (number < MIN_NUMBER || number > MAX_NUMBER) return null
 
     return listOf(1000, 100, 10, 1)
         .map { digit -> digit.findHowManyIn(number).toNumeralsConsidering(digit) }
