@@ -1,4 +1,6 @@
 fun main(number: Int): String? {
+    if (number < 0) return null
+
     var output = ""
 
     if (number >= 10) output += "X"
