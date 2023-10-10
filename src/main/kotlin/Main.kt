@@ -1,11 +1,15 @@
 fun main(number: Int): String? {
     if (number < 0) return null
 
-    val hundreds = number.rem(1000).div(100)
-    val tens = number.rem(100).div(10)
-    val ones = number.rem(10).div(1)
+    val hundreds = number.findHowMany(100)
+    val tens = number.findHowMany(10)
+    val ones = number.findHowMany(1)
 
     return hundredsNumeralFor[hundreds] + tensNumeralFor[tens] + onesNumeralFor[ones]
+}
+
+fun Int.findHowMany(divisor: Int): Int {
+    return this.rem(divisor * 10).div(divisor)
 }
 
 val onesNumeralFor = mapOf(
