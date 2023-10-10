@@ -3,14 +3,13 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
-import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class MainTest {
+class RomanNumeralsConverterTest {
     @ParameterizedTest
     @MethodSource("provideNumberNumeralPairs")
     fun `return the correct roman numeral for a given number`(number: Int, numeral: String) {
-        val actualOutput: String? = main(number)
+        val actualOutput: String? = romanNumeralsFromNumber(number)
 
         assertEquals(numeral, actualOutput)
     }
@@ -19,7 +18,7 @@ class MainTest {
     @ValueSource(ints = [-1, 4000])
     fun `handle bad input`(number: Int) {
         val expectedOutput = null
-        val actualOutput = main(number)
+        val actualOutput = romanNumeralsFromNumber(number)
 
         assertEquals(expectedOutput, actualOutput)
     }

@@ -1,7 +1,7 @@
 private const val MIN_NUMBER = 0
 private const val MAX_NUMBER = 3999
 
-fun main(number: Int): String? {
+fun romanNumeralsFromNumber(number: Int): String? {
     if (number.doesNotExistInRomanNumerals()) return null
 
     return listOf(1000, 100, 10, 1)
