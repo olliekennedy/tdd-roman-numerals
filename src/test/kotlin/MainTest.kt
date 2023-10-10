@@ -17,6 +17,7 @@ class MainTest {
         @JvmStatic
         fun provideNumberNumeralPairs(): Stream<Arguments> {
             return Stream.of(
+                Arguments.of(0, ""),
                 Arguments.of(1, "I"),
                 Arguments.of(2, "II"),
                 Arguments.of(3, "III"),
