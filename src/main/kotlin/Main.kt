@@ -9,9 +9,9 @@ fun main(number: Int): String? {
         .joinToString("")
 }
 
-fun Int.findHowManyIn(number: Int): Int = number.rem(this * 10).div(this)
+private fun Int.findHowManyIn(number: Int): Int = number.rem(this * 10).div(this)
 
-fun Int.toNumeralsConsidering(digit: Int): String? {
+private fun Int.toNumeralsConsidering(digit: Int): String? {
     val charFor = charsFor[digit]!!
     val numeralsFor = mapOf(
         0 to "",
@@ -29,7 +29,7 @@ fun Int.toNumeralsConsidering(digit: Int): String? {
     return numeralsFor[this]
 }
 
-val charsFor = mapOf(
+private val charsFor = mapOf(
     1 to mapOf(
         1 to "I",
         5 to "V",
