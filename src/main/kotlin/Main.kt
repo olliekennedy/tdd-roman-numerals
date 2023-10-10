@@ -1,16 +1,16 @@
 fun main(number: Int): String? {
     if (number < 0 || number >= 4000) return null
 
-    val thousands = number.findHowMany(1000)
-    val hundreds = number.findHowMany(100)
-    val tens = number.findHowMany(10)
-    val ones = number.findHowMany(1)
+    val thousands = 1000.findHowManyIn(number)
+    val hundreds = 100.findHowManyIn(number)
+    val tens = 10.findHowManyIn(number)
+    val ones = 1.findHowManyIn(number)
 
     return thousandsNumeralFor[thousands] + hundredsNumeralFor[hundreds] + tensNumeralFor[tens] + onesNumeralFor[ones]
 }
 
-fun Int.findHowMany(divisor: Int): Int {
-    return this.rem(divisor * 10).div(divisor)
+fun Int.findHowManyIn(number: Int): Int {
+    return number.rem(this * 10).div(this)
 }
 
 val onesNumeralFor = mapOf(
