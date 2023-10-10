@@ -14,7 +14,7 @@ private fun Int.doesNotExistInRomanNumerals() = this < MIN_NUMBER || this > MAX_
 private fun Int.findHowManyIn(number: Int): Int = number.rem(this * 10).div(this)
 
 private fun Int.toNumeralsConsidering(digit: Int): String? {
-    val charMapping = charsFor[digit]!!
+    val charMapping = digitToNumeralsMapping[digit]!!
 
     return numeralsMappingCalculatedUsing(charMapping)[this]
 }
@@ -32,7 +32,7 @@ private fun numeralsMappingCalculatedUsing(charMapping: Map<Int, String>) = mapO
     9 to "${charMapping[1]}${charMapping[10]}",
 )
 
-private val charsFor = mapOf(
+private val digitToNumeralsMapping = mapOf(
     1 to mapOf(1 to "I", 5 to "V", 10 to "X"),
     10 to mapOf(1 to "X", 5 to "L", 10 to "C"),
     100 to mapOf(1 to "C", 5 to "D", 10 to "M"),
