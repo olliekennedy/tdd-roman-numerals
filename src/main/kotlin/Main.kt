@@ -9,7 +9,7 @@ fun main(number: Int): String? {
         6 to "VI",
         7 to "VII",
         8 to "VIII",
-        9 to "IX",
+//        9 to "IX",
     )
     var output = ""
     if (number >= 10) {
