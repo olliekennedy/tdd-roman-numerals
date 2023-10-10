@@ -44,6 +44,16 @@ class MainTest {
                 Arguments.of(24, "XXIV"),
                 Arguments.of(27, "XXVII"),
                 Arguments.of(29, "XXIX"),
+                Arguments.of(30, "XXX"),
+                Arguments.of(42, "XLII"),
+                Arguments.of(53, "LIII"),
+                Arguments.of(59, "LIX"),
+                Arguments.of(67, "LXVII"),
+                Arguments.of(74, "LXXIV"),
+                Arguments.of(77, "LXXVII"),
+                Arguments.of(86, "LXXXVI"),
+                Arguments.of(91, "XCI"),
+                Arguments.of(98, "XCVIII"),
             )
         }
     }
