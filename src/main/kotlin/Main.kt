@@ -1,9 +1,9 @@
 fun main(number: Int): String? {
     if (number < 0) return null
 
-    val hundreds = number.div(100)
+    val hundreds = number.rem(1000).div(100)
     val tens = number.rem(100).div(10)
-    val ones = number.rem(10)
+    val ones = number.rem(10).div(1)
 
     return hundredsNumeralFor[hundreds] + tensNumeralFor[tens] + onesNumeralFor[ones]
 }
