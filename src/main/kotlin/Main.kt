@@ -10,8 +10,11 @@ fun main(number: Int): String? {
         7 to "VII",
         8 to "VIII",
         9 to "IX",
-        10 to "X",
-        11 to "XI",
     )
-    return numberToNumeralMapping[number]
+    var output = ""
+    if (number >= 10) {
+        output += "X"
+    }
+    output += numberToNumeralMapping[number % 10]
+    return output
 }
