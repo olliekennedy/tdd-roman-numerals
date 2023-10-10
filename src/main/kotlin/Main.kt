@@ -3,7 +3,11 @@ fun main(number: Int): String? {
 
     var output = ""
 
-    if (number >= 10) output += "X"
+    if (number >= 20) {
+        output += "XX"
+    } else if (number >= 10) {
+        output += "X"
+    }
 
     output += numeralFor[number % 10]
 
