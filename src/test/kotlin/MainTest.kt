@@ -29,6 +29,9 @@ class MainTest {
                 Arguments.of(9, "IX"),
                 Arguments.of(10, "X"),
                 Arguments.of(11, "XI"),
+                Arguments.of(14, "XIV"),
+                Arguments.of(17, "XVII"),
+                Arguments.of(19, "XIX"),
             )
         }
     }
