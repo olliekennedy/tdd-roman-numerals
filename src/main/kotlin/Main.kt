@@ -6,55 +6,45 @@ fun main(number: Int): String? {
     val tens = 10.findHowManyIn(number)
     val ones = 1.findHowManyIn(number)
 
-    return thousandsNumeralFor[thousands] + hundredsNumeralFor[hundreds] + tensNumeralFor[tens] + onesNumeralFor[ones]
+    return something(thousands, thousandsChars) + something(hundreds, hundredsChars) + something(tens, tensChars) + something(ones, onesChars)
 }
 
 fun Int.findHowManyIn(number: Int): Int {
     return number.rem(this * 10).div(this)
 }
 
-val onesNumeralFor = mapOf(
-    0 to "",
-    1 to "I",
-    2 to "II",
-    3 to "III",
-    4 to "IV",
-    5 to "V",
-    6 to "VI",
-    7 to "VII",
-    8 to "VIII",
-    9 to "IX",
-)
+fun something(number: Int, construct: Map<String, String?>): String? {
+    val numeralFor = mapOf(
+        0 to "",
+        1 to "${construct["one"]}",
+        2 to "${construct["one"]}${construct["one"]}",
+        3 to "${construct["one"]}${construct["one"]}${construct["one"]}",
+        4 to "${construct["one"]}${construct["five"]}",
+        5 to "${construct["five"]}",
+        6 to "${construct["five"]}${construct["one"]}",
+        7 to "${construct["five"]}${construct["one"]}${construct["one"]}",
+        8 to "${construct["five"]}${construct["one"]}${construct["one"]}${construct["one"]}",
+        9 to "${construct["one"]}${construct["ten"]}",
+    )
 
-val tensNumeralFor = mapOf(
-    0 to "",
-    1 to "X",
-    2 to "XX",
-    3 to "XXX",
-    4 to "XL",
-    5 to "L",
-    6 to "LX",
-    7 to "LXX",
-    8 to "LXXX",
-    9 to "XC",
-)
+    return numeralFor[number]
+}
 
-val hundredsNumeralFor = mapOf(
-    0 to "",
-    1 to "C",
-    2 to "CC",
-    3 to "CCC",
-    4 to "CD",
-    5 to "D",
-    6 to "DC",
-    7 to "DCC",
-    8 to "DCCC",
-    9 to "CM",
+val thousandsChars = mapOf(
+    "one" to "M",
 )
-
-val thousandsNumeralFor = mapOf(
-    0 to "",
-    1 to "M",
-    2 to "MM",
-    3 to "MMM",
+val hundredsChars = mapOf(
+    "one" to "C",
+    "five" to "D",
+    "ten" to thousandsChars["one"],
+)
+val tensChars = mapOf(
+    "one" to "X",
+    "five" to "L",
+    "ten" to hundredsChars["one"],
+)
+val onesChars = mapOf(
+    "one" to "I",
+    "five" to "V",
+    "ten" to tensChars["one"],
 )
