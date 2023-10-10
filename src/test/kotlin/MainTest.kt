@@ -1,6 +1,7 @@
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -14,10 +15,11 @@ class MainTest {
         assertEquals(numeral, actualOutput)
     }
 
-    @Test
-    fun `handle bad input`() {
+    @ParameterizedTest
+    @ValueSource(ints = [-1, 4000])
+    fun `handle bad input`(number: Int) {
         val expectedOutput = null
-        val actualOutput = main(-1)
+        val actualOutput = main(number)
 
         assertEquals(expectedOutput, actualOutput)
     }
