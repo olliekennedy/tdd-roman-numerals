@@ -1,5 +1,5 @@
 fun main(number: Int): String? {
-    if (number < 0) return null
+    if (number < 0 || number >= 4000) return null
 
     val hundreds = number.findHowMany(100)
     val tens = number.findHowMany(10)
