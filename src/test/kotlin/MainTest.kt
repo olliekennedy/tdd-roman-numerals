@@ -5,7 +5,7 @@ class MainTest {
     @Test
     fun `return I for 1`() {
         val expectedOutput = "I"
-        val actualOutput: String = main(1)
+        val actualOutput: String? = main(1)
 
         assertEquals(expectedOutput, actualOutput)
     }
@@ -13,7 +13,7 @@ class MainTest {
     @Test
     fun `return II for 2`() {
         val expectedOutput = "II"
-        val actualOutput: String = main(2)
+        val actualOutput: String? = main(2)
 
         assertEquals(expectedOutput, actualOutput)
     }
@@ -21,7 +21,7 @@ class MainTest {
     @Test
     fun `return III for 3`() {
         val expectedOutput = "III"
-        val actualOutput: String = main(3)
+        val actualOutput: String? = main(3)
 
         assertEquals(expectedOutput, actualOutput)
     }

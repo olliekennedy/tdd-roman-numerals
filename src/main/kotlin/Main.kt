@@ -1,9 +1,8 @@
-fun main(number: Int): String {
-    return if (number == 1) {
-        "I"
-    } else if (number == 2) {
-        "II"
-    } else {
-        "III"
-    }
+fun main(number: Int): String? {
+    val numberToNumeralMapping = mapOf(
+        1 to "I",
+        2 to "II",
+        3 to "III",
+    )
+    return numberToNumeralMapping[number]
 }
