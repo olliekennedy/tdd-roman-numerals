@@ -54,6 +54,21 @@ class MainTest {
                 Arguments.of(86, "LXXXVI"),
                 Arguments.of(91, "XCI"),
                 Arguments.of(98, "XCVIII"),
+                Arguments.of(105, "CV"),
+                Arguments.of(214, "CCXIV"),
+                Arguments.of(326, "CCCXXVI"),
+                Arguments.of(348, "CCCXLVIII"),
+                Arguments.of(431, "CDXXXI"),
+                Arguments.of(549, "DXLIX"),
+                Arguments.of(555, "DLV"),
+                Arguments.of(566, "DLXVI"),
+                Arguments.of(610, "DCX"),
+                Arguments.of(725, "DCCXXV"),
+                Arguments.of(789, "DCCLXXXIX"),
+                Arguments.of(846, "DCCCXLVI"),
+                Arguments.of(888, "DCCCLXXXVIII"),
+                Arguments.of(917, "CMXVII"),
+                Arguments.of(999, "CMXCIX"),
             )
         }
     }
