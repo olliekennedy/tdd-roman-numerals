@@ -1,11 +1,12 @@
 fun main(number: Int): String? {
     if (number < 0 || number >= 4000) return null
 
+    val thousands = number.findHowMany(1000)
     val hundreds = number.findHowMany(100)
     val tens = number.findHowMany(10)
     val ones = number.findHowMany(1)
 
-    return hundredsNumeralFor[hundreds] + tensNumeralFor[tens] + onesNumeralFor[ones]
+    return thousandsNumeralFor[thousands] + hundredsNumeralFor[hundreds] + tensNumeralFor[tens] + onesNumeralFor[ones]
 }
 
 fun Int.findHowMany(divisor: Int): Int {
@@ -49,4 +50,11 @@ val hundredsNumeralFor = mapOf(
     7 to "DCC",
     8 to "DCCC",
     9 to "CM",
+)
+
+val thousandsNumeralFor = mapOf(
+    0 to "",
+    1 to "M",
+    2 to "MM",
+    3 to "MMM",
 )
