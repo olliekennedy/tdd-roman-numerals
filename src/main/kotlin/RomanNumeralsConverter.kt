@@ -2,14 +2,14 @@ private const val MIN_NUMBER = 0
 private const val MAX_NUMBER = 3999
 
 fun romanNumeralsFromNumber(number: Int): String? {
-    if (number.doesNotExistInRomanNumerals()) return null
+    if (number.isOutOfRange()) return null
 
     return listOf(1000, 100, 10, 1)
         .map { digit -> digit.findHowManyIn(number).toNumeralsConsidering(digit) }
         .joinToString("")
 }
 
-private fun Int.doesNotExistInRomanNumerals() = this < MIN_NUMBER || this > MAX_NUMBER
+private fun Int.isOutOfRange() = this < MIN_NUMBER || this > MAX_NUMBER
 
 private fun Int.findHowManyIn(number: Int): Int = number.rem(this * 10).div(this)
 
