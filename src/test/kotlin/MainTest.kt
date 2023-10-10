@@ -1,28 +1,26 @@
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
+import java.util.stream.Stream
 import kotlin.test.assertEquals
 
 class MainTest {
-    @Test
-    fun `return I for 1`() {
-        val expectedOutput = "I"
-        val actualOutput: String? = main(1)
+    @ParameterizedTest
+    @MethodSource("provideNumberNumeralPairs")
+    fun `return the correct roman numeral for a given number`(number: Int, numeral: String) {
+        val actualOutput: String? = main(number)
 
-        assertEquals(expectedOutput, actualOutput)
+        assertEquals(numeral, actualOutput)
     }
 
-    @Test
-    fun `return II for 2`() {
-        val expectedOutput = "II"
-        val actualOutput: String? = main(2)
-
-        assertEquals(expectedOutput, actualOutput)
-    }
-
-    @Test
-    fun `return III for 3`() {
-        val expectedOutput = "III"
-        val actualOutput: String? = main(3)
-
-        assertEquals(expectedOutput, actualOutput)
+    companion object {
+        @JvmStatic
+        fun provideNumberNumeralPairs(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of(1, "I"),
+                Arguments.of(2, "II"),
+                Arguments.of(3, "III"),
+            )
+        }
     }
 }

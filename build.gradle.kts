@@ -26,6 +26,10 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.0") {
+        because("we want to perform parameterized tests")
+    }
+
 }
 
 tasks.test {
