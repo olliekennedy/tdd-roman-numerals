@@ -1,15 +1,13 @@
 fun main(number: Int): String? {
     if (number < 0) return null
 
-    var output = ""
+    val tens = number / 10
+    val ones = number % 10
 
-    output += tensNumeralFor[number / 10]
-    output += numeralFor[number % 10]
-
-    return output
+    return tensNumeralFor[tens] + onesNumeralFor[ones]
 }
 
-val numeralFor = mapOf(
+val onesNumeralFor = mapOf(
     0 to "",
     1 to "I",
     2 to "II",
