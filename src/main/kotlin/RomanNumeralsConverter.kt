@@ -15,6 +15,7 @@ fun numberFromRomanNumerals(numeral: String): Int? {
     var onesNumerals = ""
     var tensNumerals = ""
     var hundredsNumerals = ""
+    var thousandsNumerals = ""
     if (numeral.any { it !in VALID_NUMERALS }) return null
 
     for ((index, char) in numeralRemainder.withIndex()) {
@@ -41,7 +42,15 @@ fun numberFromRomanNumerals(numeral: String): Int? {
         }
     }
 
-    return onesNumerals.toNumberConsidering(1) + tensNumerals.toNumberConsidering(10) + hundredsNumerals.toNumberConsidering(100)
+    for ((index, char) in numeralRemainder.withIndex()) {
+        if (char in listOf(digitToNumeralsMapping[1000]!![1], digitToNumeralsMapping[1000]!![5])) {
+            thousandsNumerals = numeralRemainder.substring(index, numeralRemainder.length)
+            numeralRemainder = numeralRemainder.substring(0, index)
+            break
+        }
+    }
+
+    return onesNumerals.toNumberConsidering(1) + tensNumerals.toNumberConsidering(10) + hundredsNumerals.toNumberConsidering(100) + thousandsNumerals.toNumberConsidering(1000)
 }
 
 private fun Int.isOutOfRange() = this < MIN_NUMBER || this > MAX_NUMBER
