@@ -16,7 +16,7 @@ class RomanNumeralsConverterTest {
 
     @ParameterizedTest
     @ValueSource(ints = [-1, 4000])
-    fun `handle bad input`(number: Int) {
+    fun `handle bad number input`(number: Int) {
         val expectedOutput = null
         val actualOutput = romanNumeralsFromNumber(number)
 
@@ -29,6 +29,15 @@ class RomanNumeralsConverterTest {
         val actualOutput: Int? = numberFromRomanNumerals(numeral)
 
         assertEquals(number, actualOutput)
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = [" ", "i", "q", "Z", "J", "v", "K", "x", "P", "Y", "w", "F", "B", "u"])
+    fun `handle bad numeral input`(numeral: String) {
+        val expectedOutput = null
+        val actualOutput = numberFromRomanNumerals(numeral)
+
+        assertEquals(expectedOutput, actualOutput)
     }
 
     companion object {
