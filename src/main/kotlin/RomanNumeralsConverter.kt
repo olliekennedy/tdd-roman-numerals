@@ -1,5 +1,6 @@
 private const val MIN_NUMBER = 0
 private const val MAX_NUMBER = 3999
+private val VALID_NUMERALS = listOf('I', 'V', 'X')
 
 fun romanNumeralsFromNumber(number: Int): String? {
     if (number.isOutOfRange()) return null
@@ -10,11 +11,7 @@ fun romanNumeralsFromNumber(number: Int): String? {
 }
 
 fun numberFromRomanNumerals(numeral: String): Int? {
-    for (char in numeral.split("")) {
-        if (char !in listOf("", "I", "V", "X")) {
-            return null
-        }
-    }
+    if (numeral.any { it !in VALID_NUMERALS }) return null
 
     return numeral.toNumberConsidering(1)
 }
