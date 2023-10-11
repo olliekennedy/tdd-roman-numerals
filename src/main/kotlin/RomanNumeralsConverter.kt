@@ -10,6 +10,8 @@ fun romanNumeralsFromNumber(number: Int): String? {
 }
 
 fun numberFromRomanNumerals(numeral: String): Int? {
+    if (numeral !in "I") return null
+
     return if (numeral == "I") 1 else 0
 }
 
