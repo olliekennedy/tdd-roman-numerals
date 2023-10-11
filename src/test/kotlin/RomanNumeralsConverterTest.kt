@@ -100,6 +100,7 @@ class RomanNumeralsConverterTest {
         fun provideNumeralNumberPairs(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of("", 0),
+                Arguments.of("I", 1),
             )
         }
     }
