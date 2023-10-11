@@ -151,6 +151,21 @@ class RomanNumeralsConverterTest {
                 Arguments.of("DCCCLXXXVIII", 888),
                 Arguments.of("CMXVII", 917),
                 Arguments.of("CMXCIX", 999),
+                Arguments.of("MXXXII", 1032),
+                Arguments.of("MCCLXXXIX", 1289),
+                Arguments.of("MCCCLXXV", 1375),
+                Arguments.of("MDXCVII", 1597),
+                Arguments.of("MDCCLXXXII", 1782),
+                Arguments.of("MMCXCIV", 2194),
+                Arguments.of("MMCDLXV", 2465),
+                Arguments.of("MMDCCVIII", 2708),
+                Arguments.of("MMCMXCIX", 2999),
+                Arguments.of("MMMCCXXI", 3221),
+                Arguments.of("MMMCCCLXVI", 3366),
+                Arguments.of("MMMDLXXVII", 3577),
+                Arguments.of("MMMDCCLXXXVIII", 3788),
+                Arguments.of("MMMCMXXXI", 3931),
+                Arguments.of("MMMCMXCIX", 3999),
             )
         }
     }
