@@ -23,6 +23,14 @@ class RomanNumeralsConverterTest {
         assertEquals(expectedOutput, actualOutput)
     }
 
+    @ParameterizedTest
+    @MethodSource("provideNumeralNumberPairs")
+    fun `return the correct number for a given roman numeral`(numeral: String, number: Int) {
+        val actualOutput: Int? = numberFromRomanNumerals(numeral)
+
+        assertEquals(number, actualOutput)
+    }
+
     companion object {
         @JvmStatic
         fun provideNumberNumeralPairs(): Stream<Arguments> {
@@ -85,6 +93,13 @@ class RomanNumeralsConverterTest {
                 Arguments.of(3788, "MMMDCCLXXXVIII"),
                 Arguments.of(3931, "MMMCMXXXI"),
                 Arguments.of(3999, "MMMCMXCIX"),
+            )
+        }
+
+        @JvmStatic
+        fun provideNumeralNumberPairs(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of("", 0),
             )
         }
     }
