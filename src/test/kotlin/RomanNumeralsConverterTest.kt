@@ -111,6 +111,13 @@ class RomanNumeralsConverterTest {
                 Arguments.of("", 0),
                 Arguments.of("I", 1),
                 Arguments.of("II", 2),
+                Arguments.of("III", 3),
+                Arguments.of("IV", 4),
+                Arguments.of("V", 5),
+                Arguments.of("VI", 6),
+                Arguments.of("VII", 7),
+                Arguments.of("VIII", 8),
+                Arguments.of("IX", 9),
             )
         }
     }
