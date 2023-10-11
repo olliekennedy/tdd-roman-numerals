@@ -11,22 +11,30 @@ fun romanNumeralsFromNumber(number: Int): String? {
 }
 
 fun numberFromRomanNumerals(numeral: String): Int? {
-    var numeralRemainder = numeral
+    var numeralsLeftToProcess = numeral
     if (numeral.any { it !in VALID_NUMERALS }) return null
 
-    return listOf(1, 10, 100, 1000).sumOf {
-        var number = 0
-        for ((index, char) in numeralRemainder.withIndex()) {
-            if (char in listOf(digitToNumeralsMapping[it]!![1], digitToNumeralsMapping[it]!![5])) {
-                val numerals = numeralRemainder.substring(index, numeralRemainder.length)
-                numeralRemainder = numeralRemainder.substring(0, index)
-                number = numerals.toNumberConsidering(it)
-                break
-            }
-        }
-        number
+    return listOf(1, 10, 100, 1000).sumOf { digit ->
+        val (numeralsForThisDigit, numeralsRemainder) = extractNumeralsForThisDigit(numeralsLeftToProcess, digit)
+        numeralsLeftToProcess = numeralsRemainder
+
+        numeralsForThisDigit.toNumberConsidering(digit)
     }
 }
+
+private fun extractNumeralsForThisDigit(numerals: String, it: Int): Pair<String, String> {
+    for ((index, char) in numerals.withIndex()) {
+        if (char in relevantNumeralCharsForThisDigit(it)) {
+            val numeralsForThisDigit = numerals.substring(index, numerals.length)
+            val numeralsRemainder = numerals.substring(0, index)
+            return Pair(numeralsForThisDigit, numeralsRemainder)
+        }
+    }
+    return Pair("", numerals)
+}
+
+private fun relevantNumeralCharsForThisDigit(digit: Int) =
+    listOf(digitToNumeralsMapping[digit]!![1], digitToNumeralsMapping[digit]!![5])
 
 private fun Int.isOutOfRange() = this < MIN_NUMBER || this > MAX_NUMBER
 
