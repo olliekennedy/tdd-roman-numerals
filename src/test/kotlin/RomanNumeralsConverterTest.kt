@@ -110,6 +110,7 @@ class RomanNumeralsConverterTest {
             return Stream.of(
                 Arguments.of("", 0),
                 Arguments.of("I", 1),
+                Arguments.of("II", 2),
             )
         }
     }
