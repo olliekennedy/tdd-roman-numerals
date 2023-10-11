@@ -9,6 +9,10 @@ fun romanNumeralsFromNumber(number: Int): String? {
         .joinToString("")
 }
 
+fun numberFromRomanNumerals(numeral: String): Int? {
+    return 0
+}
+
 private fun Int.isOutOfRange() = this < MIN_NUMBER || this > MAX_NUMBER
 
 private fun Int.findHowManyIn(number: Int): Int = number.rem(this * 10).div(this)
