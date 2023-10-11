@@ -12,45 +12,20 @@ fun romanNumeralsFromNumber(number: Int): String? {
 
 fun numberFromRomanNumerals(numeral: String): Int? {
     var numeralRemainder = numeral
-    var onesNumerals = ""
-    var tensNumerals = ""
-    var hundredsNumerals = ""
-    var thousandsNumerals = ""
     if (numeral.any { it !in VALID_NUMERALS }) return null
 
-    for ((index, char) in numeralRemainder.withIndex()) {
-        if (char in listOf(digitToNumeralsMapping[1]!![1], digitToNumeralsMapping[1]!![5])) {
-            onesNumerals = numeralRemainder.substring(index, numeralRemainder.length)
-            numeralRemainder = numeralRemainder.substring(0, index)
-            break
+    return listOf(1, 10, 100, 1000).sumOf {
+        var number = 0
+        for ((index, char) in numeralRemainder.withIndex()) {
+            if (char in listOf(digitToNumeralsMapping[it]!![1], digitToNumeralsMapping[it]!![5])) {
+                val numerals = numeralRemainder.substring(index, numeralRemainder.length)
+                numeralRemainder = numeralRemainder.substring(0, index)
+                number = numerals.toNumberConsidering(it)
+                break
+            }
         }
+        number
     }
-
-    for ((index, char) in numeralRemainder.withIndex()) {
-        if (char in listOf(digitToNumeralsMapping[10]!![1], digitToNumeralsMapping[10]!![5])) {
-            tensNumerals = numeralRemainder.substring(index, numeralRemainder.length)
-            numeralRemainder = numeralRemainder.substring(0, index)
-            break
-        }
-    }
-
-    for ((index, char) in numeralRemainder.withIndex()) {
-        if (char in listOf(digitToNumeralsMapping[100]!![1], digitToNumeralsMapping[100]!![5])) {
-            hundredsNumerals = numeralRemainder.substring(index, numeralRemainder.length)
-            numeralRemainder = numeralRemainder.substring(0, index)
-            break
-        }
-    }
-
-    for ((index, char) in numeralRemainder.withIndex()) {
-        if (char in listOf(digitToNumeralsMapping[1000]!![1], digitToNumeralsMapping[1000]!![5])) {
-            thousandsNumerals = numeralRemainder.substring(index, numeralRemainder.length)
-            numeralRemainder = numeralRemainder.substring(0, index)
-            break
-        }
-    }
-
-    return onesNumerals.toNumberConsidering(1) + tensNumerals.toNumberConsidering(10) + hundredsNumerals.toNumberConsidering(100) + thousandsNumerals.toNumberConsidering(1000)
 }
 
 private fun Int.isOutOfRange() = this < MIN_NUMBER || this > MAX_NUMBER
