@@ -10,9 +10,9 @@ fun romanNumeralsFromNumber(number: Int): String? {
 }
 
 fun numberFromRomanNumerals(numeral: String): Int? {
-    if (numeral !in "I") return null
+    if (numeral !in listOf("", "I", "II")) return null
 
-    return if (numeral == "I") 1 else 0
+    return numeral.toNumberConsidering(1)
 }
 
 private fun Int.isOutOfRange() = this < MIN_NUMBER || this > MAX_NUMBER
@@ -23,6 +23,18 @@ private fun Int.toNumeralsConsidering(digit: Int): String? {
     val charMapping = digitToNumeralsMapping[digit]!!
 
     return numeralsMappingCalculatedUsing(charMapping)[this]
+}
+
+private fun String.toNumberConsidering(digit: Int): Int? {
+    val charMapping = digitToNumeralsMapping[digit]!!
+
+    val numberMapping = numberMappingCalculatedUsing(charMapping)
+
+    return numberMapping[this]
+}
+
+private fun numberMappingCalculatedUsing(charMapping: Map<Int, String>): Map<String, Int> {
+    return numeralsMappingCalculatedUsing(charMapping).map { (k, v) -> v to k }.toMap()
 }
 
 private fun numeralsMappingCalculatedUsing(charMapping: Map<Int, String>) = mapOf(
