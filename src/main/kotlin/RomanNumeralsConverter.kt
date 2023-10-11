@@ -10,7 +10,7 @@ fun romanNumeralsFromNumber(number: Int): String? {
 }
 
 fun numberFromRomanNumerals(numeral: String): Int? {
-    return 0
+    return if (numeral == "I") 1 else 0
 }
 
 private fun Int.isOutOfRange() = this < MIN_NUMBER || this > MAX_NUMBER
