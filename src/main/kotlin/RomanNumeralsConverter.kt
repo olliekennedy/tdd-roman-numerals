@@ -10,7 +10,11 @@ fun romanNumeralsFromNumber(number: Int): String? {
 }
 
 fun numberFromRomanNumerals(numeral: String): Int? {
-    if (numeral !in listOf("", "I", "II")) return null
+    for (char in numeral.split("")) {
+        if (char !in listOf("", "I", "V", "X")) {
+            return null
+        }
+    }
 
     return numeral.toNumberConsidering(1)
 }
