@@ -1,6 +1,6 @@
 private const val MIN_NUMBER = 0
 private const val MAX_NUMBER = 3999
-private val VALID_NUMERALS = listOf('I', 'V', 'X', 'L', 'C')
+private val VALID_NUMERALS = listOf('I', 'V', 'X', 'L', 'C', 'D', 'M')
 
 fun romanNumeralsFromNumber(number: Int): String? {
     if (number.isOutOfRange()) return null
@@ -14,6 +14,7 @@ fun numberFromRomanNumerals(numeral: String): Int? {
     var numeralRemainder = numeral
     var onesNumerals = ""
     var tensNumerals = ""
+    var hundredsNumerals = ""
     if (numeral.any { it !in VALID_NUMERALS }) return null
 
     for ((index, char) in numeralRemainder.withIndex()) {
@@ -32,7 +33,15 @@ fun numberFromRomanNumerals(numeral: String): Int? {
         }
     }
 
-    return onesNumerals.toNumberConsidering(1) + tensNumerals.toNumberConsidering(10)
+    for ((index, char) in numeralRemainder.withIndex()) {
+        if (char in listOf(digitToNumeralsMapping[100]!![1], digitToNumeralsMapping[100]!![5])) {
+            hundredsNumerals = numeralRemainder.substring(index, numeralRemainder.length)
+            numeralRemainder = numeralRemainder.substring(0, index)
+            break
+        }
+    }
+
+    return onesNumerals.toNumberConsidering(1) + tensNumerals.toNumberConsidering(10) + hundredsNumerals.toNumberConsidering(100)
 }
 
 private fun Int.isOutOfRange() = this < MIN_NUMBER || this > MAX_NUMBER
