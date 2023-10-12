@@ -22,19 +22,16 @@ fun numberFromRomanNumerals(numeral: String): Int? {
     }
 }
 
-private fun extractNumeralsForThisDigit(numerals: String, it: Int): Pair<String, String> {
-    for ((index, char) in numerals.withIndex()) {
-        if (char in relevantNumeralCharsForThisDigit(it)) {
-            val numeralsForThisDigit = numerals.substring(index, numerals.length)
-            val numeralsRemainder = numerals.substring(0, index)
-            return Pair(numeralsForThisDigit, numeralsRemainder)
-        }
-    }
-    return Pair("", numerals)
+private fun extractNumeralsForThisDigit(numerals: String, digit: Int): Pair<String, String> {
+    val index = numerals.indexOfFirst { it in relevantNumeralCharsForThisDigit(digit) }
+
+    if (index == -1) return Pair("", numerals)
+
+    return Pair(numerals.substring(index), numerals.take(index))
 }
 
-private fun relevantNumeralCharsForThisDigit(digit: Int) =
-    listOf(digitToNumeralsMapping[digit]!![1], digitToNumeralsMapping[digit]!![5])
+private fun relevantNumeralCharsForThisDigit(digit: Int): List<Char?> =
+    digitToNumeralsMapping[digit]!!.filter { it.key in listOf(1, 5) }.values.toList()
 
 private fun Int.isOutOfRange() = this < MIN_NUMBER || this > MAX_NUMBER
 
