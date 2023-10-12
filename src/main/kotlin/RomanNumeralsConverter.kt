@@ -18,7 +18,7 @@ fun numberFromRomanNumerals(numeral: String): Int? {
         val (numeralsForThisDigit, numeralsRemainder) = extractNumeralsForThisDigit(numeralsLeftToProcess, digit)
         numeralsLeftToProcess = numeralsRemainder
 
-        numeralsForThisDigit.toNumberConsidering(digit)
+        numeralsForThisDigit.toNumberConsidering(digit) ?: return null
     }
 }
 
@@ -43,12 +43,14 @@ private fun Int.toNumeralsConsidering(digit: Int): String? {
     return numeralsMappingCalculatedUsing(charMapping)[this]
 }
 
-private fun String.toNumberConsidering(digit: Int): Int {
+private fun String.toNumberConsidering(digit: Int): Int? {
     val charMapping = digitToNumeralsMapping[digit]!!
 
     val numberMapping = numberMappingCalculatedUsing(charMapping)
 
-    return digit * (numberMapping[this] ?: 0)
+    val numberValue = numberMapping[this] ?: return null
+
+    return digit * numberValue
 }
 
 private fun numberMappingCalculatedUsing(charMapping: Map<Int, Char>): Map<String, Int> {
