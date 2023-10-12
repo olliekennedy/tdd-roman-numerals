@@ -11,9 +11,9 @@ fun romanNumeralsFromNumber(number: Int): String? {
 }
 
 fun numberFromRomanNumerals(numeral: String): Int? {
-    var numeralsLeftToProcess = numeral
     if (numeral.any { it !in VALID_NUMERALS }) return null
 
+    var numeralsLeftToProcess = numeral
     return listOf(1, 10, 100, 1000).sumOf { digit ->
         val (numeralsForThisDigit, numeralsRemainder) = extractNumeralsForThisDigit(numeralsLeftToProcess, digit)
         numeralsLeftToProcess = numeralsRemainder
@@ -53,9 +53,8 @@ private fun String.toNumberConsidering(digit: Int): Int? {
     return digit * numberValue
 }
 
-private fun numberMappingCalculatedUsing(charMapping: Map<Int, Char>): Map<String, Int> {
-    return numeralsMappingCalculatedUsing(charMapping).map { (k, v) -> v to k }.toMap()
-}
+private fun numberMappingCalculatedUsing(charMapping: Map<Int, Char>): Map<String, Int> =
+    numeralsMappingCalculatedUsing(charMapping).map { (k, v) -> v to k }.toMap()
 
 private fun numeralsMappingCalculatedUsing(charMapping: Map<Int, Char>) = mapOf(
     0 to "",
