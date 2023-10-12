@@ -32,7 +32,7 @@ class RomanNumeralsConverterTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = [" ", "i", "q", "Z", "J", "v", "K", "x", "P", "Y", "w", "F", "B", "u"])
+    @ValueSource(strings = [" ", "i", "q", "Z", "J", "v", "K", "x", "P", "Y", "w", "F", "B", "u", "MMMM"])
     fun `handle bad numeral input`(numeral: String) {
         val expectedOutput = null
         val actualOutput = numberFromRomanNumerals(numeral)
